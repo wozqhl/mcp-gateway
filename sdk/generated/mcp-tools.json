@@ -1,0 +1,578 @@
+{
+  "tools": [
+    {
+      "name": "getHealth",
+      "description": "Health check (optional circuit snapshot)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          }
+        }
+      }
+    },
+    {
+      "name": "getReady",
+      "description": "Readiness (503 when circuit open or shutting down)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          }
+        }
+      }
+    },
+    {
+      "name": "getOpenApi",
+      "description": "OpenAPI 3 document",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "getMetrics",
+      "description": "Prometheus metrics (incl. optional ip_denied_total, body_too_large_total, upstream_timeout_total, circuit_open_total, webhook_retries_total)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "toolsList",
+      "description": "List allowed tools for the caller tenant",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "mcpToolsList",
+      "description": "Alias of /tools/list",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "toolsCall",
+      "description": "Call a tool (policy + rate-limit + audit)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          },
+          "name": {
+            "type": "string"
+          },
+          "tool": {
+            "type": "string"
+          },
+          "arguments": {
+            "type": "object"
+          },
+          "args": {
+            "type": "object"
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "arguments": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "mcpToolsCall",
+      "description": "Alias of /tools/call",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "tool": {
+            "type": "string"
+          },
+          "arguments": {
+            "type": "object"
+          },
+          "args": {
+            "type": "object"
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "arguments": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "mcpStreamableGet",
+      "description": "SSE not implemented (POST-only MVP)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          },
+          "MCP-Protocol-Version": {
+            "type": "string",
+            "example": "2025-03-26"
+          }
+        }
+      }
+    },
+    {
+      "name": "mcpJsonRpc",
+      "description": "Streamable HTTP JSON-RPC (POST-only MVP)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          },
+          "MCP-Protocol-Version": {
+            "type": "string",
+            "example": "2025-03-26"
+          },
+          "Mcp-Session-Id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "jsonrpc": {
+            "type": "string",
+            "example": "2.0"
+          },
+          "id": {
+            "description": "Request id (omit for notifications)",
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "example": "initialize"
+          },
+          "params": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    {
+      "name": "mcpSessionDelete",
+      "description": "Terminate Streamable HTTP session",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          },
+          "MCP-Protocol-Version": {
+            "type": "string",
+            "example": "2025-03-26"
+          },
+          "Mcp-Session-Id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "Mcp-Session-Id"
+        ]
+      }
+    },
+    {
+      "name": "auditQuery",
+      "description": "Query audit events (JSON)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          },
+          "tenant": {
+            "type": "string"
+          },
+          "tool": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer",
+            "default": 50
+          },
+          "since": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "until": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "redact": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "auditExport",
+      "description": "Download audit export pack (JSON or CSV; optional gzip)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "json",
+              "csv"
+            ],
+            "default": "json"
+          },
+          "tenant": {
+            "type": "string"
+          },
+          "tool": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          },
+          "since": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "until": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "redact": {
+            "type": "string"
+          },
+          "gzip": {
+            "type": "string",
+            "enum": [
+              "0",
+              "1",
+              "true",
+              "false"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "adminReload",
+      "description": "Hot-reload policy from config path and reconnect upstream",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "adminListTenants",
+      "description": "List tenants (admin inventory; no raw API keys)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "adminGetTenant",
+      "description": "Get one tenant (admin; no secrets)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          },
+          "tenantId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "tenantId"
+        ]
+      }
+    },
+    {
+      "name": "adminListSessions",
+      "description": "List live Streamable HTTP sessions (admin inventory; no secrets)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          }
+        }
+      }
+    },
+    {
+      "name": "adminDeleteSession",
+      "description": "Force-drop a Streamable HTTP session (admin ops kill)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    },
+    {
+      "name": "adminGetConfig",
+      "description": "Redacted runtime config (admin; no secrets)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          }
+        }
+      }
+    },
+    {
+      "name": "adminListWebhooks",
+      "description": "List outbound webhooks (admin inventory; no secrets)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          }
+        }
+      }
+    },
+    {
+      "name": "getAdminAuditCsv",
+      "description": "Admin SIEM audit CSV (no bodies/tokens)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          },
+          "tenant": {
+            "type": "string"
+          },
+          "tool": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          },
+          "since": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "until": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    {
+      "name": "getAdminAuditMd",
+      "description": "Admin SIEM audit Markdown (no bodies/tokens)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          },
+          "tenant": {
+            "type": "string"
+          },
+          "tool": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          },
+          "since": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "until": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    {
+      "name": "getAdminAuditHtml",
+      "description": "Admin SIEM audit HTML (no bodies/tokens)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          },
+          "tenant": {
+            "type": "string"
+          },
+          "tool": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          },
+          "since": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "until": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    {
+      "name": "getAdminAudit",
+      "description": "Admin audit snapshot (json | csv | md | html)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "json",
+              "csv",
+              "md",
+              "html"
+            ],
+            "default": "json"
+          },
+          "tenant": {
+            "type": "string"
+          },
+          "tool": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          },
+          "since": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "until": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "redact": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "adminRotateTenantToken",
+      "description": "Rotate a tenant API token (admin; new token shown once)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "tenantId": {
+            "type": "string"
+          },
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          }
+        },
+        "required": [
+          "tenantId"
+        ]
+      }
+    },
+    {
+      "name": "adminRotateTenantTokenByBody",
+      "description": "Rotate a tenant API token (admin; body tenantId)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "X-Request-Id": {
+            "type": "string",
+            "maxLength": 128,
+            "example": "mvp-req-id-a1b2c3d4"
+          },
+          "tenantId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Alias of tenantId"
+          }
+        },
+        "required": [
+          "tenantId"
+        ]
+      }
+    }
+  ]
+}
