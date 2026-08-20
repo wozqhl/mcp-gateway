@@ -1,0 +1,1 @@
+{"ts":"2026-08-17T01:23:19.534Z","tool":"upstreamPing","allow":false,"reason":"upstream_timeout","arguments":{"note":"should-timeout"},"result":null,"tenantId":"acme","via":"upstream","requestId":"d78f0b93-c866-4fdf-96b4-a036d84461be"}

@@ -1,0 +1,31 @@
+# HELP tool_calls_total Total tool call decisions by tool, decision, and tenant
+# TYPE tool_calls_total counter
+tool_calls_total{decision="timeout",tenant="acme",tool="upstreamPing"} 1
+# HELP rate_limited_total Total rate-limited tool call attempts
+# TYPE rate_limited_total counter
+rate_limited_total 0
+# HELP ip_denied_total Total requests denied by per-tenant IP allowlist
+# TYPE ip_denied_total counter
+ip_denied_total 0
+# HELP body_too_large_total Total requests rejected for exceeding maxBodyBytes
+# TYPE body_too_large_total counter
+body_too_large_total 0
+# HELP upstream_timeout_total Total upstream HTTP/stdio calls aborted after timeoutMs
+# TYPE upstream_timeout_total counter
+upstream_timeout_total 1
+# HELP circuit_open_total Total tools/call requests rejected because the upstream circuit breaker is open
+# TYPE circuit_open_total counter
+circuit_open_total 0
+# HELP webhook_retries_total Total outbound audit webhook POST retries (OSS: one retry on 5xx or network/timeout)
+# TYPE webhook_retries_total counter
+webhook_retries_total 0
+# HELP http_requests_total Total HTTP requests by path and status
+# TYPE http_requests_total counter
+http_requests_total{path="/health",status="200"} 2
+http_requests_total{path="/tools/call",status="504"} 1
+# HELP audit_events In-memory audit events currently retained (ring buffer)
+# TYPE audit_events gauge
+audit_events 1
+# HELP audit_retained In-memory audit events currently retained (alias of audit_events)
+# TYPE audit_retained gauge
+audit_retained 1

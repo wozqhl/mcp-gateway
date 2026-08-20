@@ -1,0 +1,10 @@
+mcp-gateway listening on http://127.0.0.1:8784
+config=/workspace/oss-cash-lab/bets/b-mcp-gateway/data/policy.watch.json
+audit=/workspace/oss-cash-lab/bets/b-mcp-gateway/data/audit.watch.jsonl
+auditMax=10000
+sessionTtl=3600
+watch=poll 300ms
+logJson=off
+watching /workspace/oss-cash-lab/bets/b-mcp-gateway/data/policy.watch.json (poll 300ms)
+regenerated {"tenants":["acme","restricted","ip-locked"],"allow":["echo","digest","listPets","getPet","watchDummy"],"deny":["deletePet","shell"],"upstreamTools":[]}
+shutting down

@@ -1,0 +1,9 @@
+mcp-gateway listening on http://127.0.0.1:8786
+config=/workspace/oss-cash-lab/bets/b-mcp-gateway/data/policy.retry.json
+audit=/workspace/oss-cash-lab/bets/b-mcp-gateway/data/audit.retry.jsonl
+auditMax=10000
+sessionTtl=3600
+watch=off
+logJson=off
+shutting down
+exit

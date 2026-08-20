@@ -1,0 +1,9 @@
+mcp-gateway listening on http://127.0.0.1:8798
+config=/workspace/oss-cash-lab/bets/b-mcp-gateway/data/policy.hmac.json
+audit=/workspace/oss-cash-lab/bets/b-mcp-gateway/data/audit.hmac.jsonl
+auditMax=10000
+sessionTtl=3600
+watch=off
+logJson=off
+shutting down
+exit

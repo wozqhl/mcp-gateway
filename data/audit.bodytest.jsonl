@@ -1,0 +1,1 @@
+{"ts":"2026-08-13T01:58:40.844Z","tool":"echo","allow":true,"reason":"ok","arguments":{"message":"body-ok"},"result":{"ok":true,"echo":{"message":"body-ok"}},"tenantId":"acme","via":"builtin"}

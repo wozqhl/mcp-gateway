@@ -1,0 +1,1 @@
+{"ts":"2026-08-17T01:23:39.368Z","tool":"echo","allow":true,"reason":"ok","arguments":{"message":"retry-proof"},"result":{"ok":true,"echo":{"message":"retry-proof"}},"tenantId":"acme","via":"builtin","requestId":"4f600b0b-17a2-4ec0-aea7-af8ac7aedeef"}

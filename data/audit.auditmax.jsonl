@@ -1,0 +1,3 @@
+{"ts":"2026-08-17T01:23:50.748Z","tool":"echo","allow":true,"reason":"ok","arguments":{"message":"cap-1"},"result":{"ok":true,"echo":{"message":"cap-1"}},"tenantId":"acme","via":"builtin","requestId":"cap-1"}
+{"ts":"2026-08-17T01:23:50.758Z","tool":"echo","allow":true,"reason":"ok","arguments":{"message":"cap-2"},"result":{"ok":true,"echo":{"message":"cap-2"}},"tenantId":"acme","via":"builtin","requestId":"cap-2"}
+{"ts":"2026-08-17T01:23:50.765Z","tool":"echo","allow":true,"reason":"ok","arguments":{"message":"cap-3"},"result":{"ok":true,"echo":{"message":"cap-3"}},"tenantId":"acme","via":"builtin","requestId":"cap-3"}

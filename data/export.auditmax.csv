@@ -1,0 +1,3 @@
+ts,tenantId,tool,allow,reason,via,arguments,result,argumentKeysHash,requestId
+2026-08-17T01:23:50.758Z,acme,echo,true,ok,builtin,"{""message"":""cap-2""}","{""ok"":true,""echo"":{""message"":""cap-2""}}",,cap-2
+2026-08-17T01:23:50.765Z,acme,echo,true,ok,builtin,"{""message"":""cap-3""}","{""ok"":true,""echo"":{""message"":""cap-3""}}",,cap-3

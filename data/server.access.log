@@ -1,0 +1,11 @@
+mcp-gateway listening on http://127.0.0.1:8782
+config=/workspace/oss-cash-lab/bets/b-mcp-gateway/data/policy.mvp.json
+audit=/workspace/oss-cash-lab/bets/b-mcp-gateway/data/audit.access.jsonl
+auditMax=10000
+sessionTtl=3600
+upstream type=http connected=true tools=upstreamPing,upstreamEcho
+watch=off
+logJson=on
+{"ts":"2026-08-17T01:23:49.163Z","level":"info","msg":"http","service":"mcp-gateway","method":"GET","path":"/openapi.json","status":200,"durationMs":2,"requestId":"test-log-1","bytesOut":123171,"remote":"127.0.0.1"}
+shutting down
+exit

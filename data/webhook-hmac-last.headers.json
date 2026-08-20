@@ -1,0 +1,19 @@
+{
+  "signature": "sha256=f1abf55f59daf9ab06ba4c9bd334f18921aac3d121714141b2adc930cbdb993c",
+  "timestamp": "1786929813",
+  "verified": true,
+  "headers": {
+    "host": "127.0.0.1:8797",
+    "connection": "keep-alive",
+    "content-type": "application/json; charset=utf-8",
+    "user-agent": "mcp-gateway-webhook/0.1.0",
+    "x-request-id": "86e4383e-d6c4-46bc-8ad4-62476c8b5c67",
+    "x-webhook-timestamp": "1786929813",
+    "x-webhook-signature": "sha256=f1abf55f59daf9ab06ba4c9bd334f18921aac3d121714141b2adc930cbdb993c",
+    "accept": "*/*",
+    "accept-language": "*",
+    "sec-fetch-mode": "cors",
+    "accept-encoding": "gzip, deflate",
+    "content-length": "452"
+  }
+}

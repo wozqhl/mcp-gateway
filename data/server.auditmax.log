@@ -1,0 +1,9 @@
+mcp-gateway listening on http://127.0.0.1:8780
+config=/workspace/oss-cash-lab/bets/b-mcp-gateway/data/policy.auditmax.json
+audit=/workspace/oss-cash-lab/bets/b-mcp-gateway/data/audit.auditmax.jsonl
+auditMax=2
+sessionTtl=3600
+watch=off
+logJson=off
+shutting down
+exit

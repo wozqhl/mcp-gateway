@@ -1,0 +1,67 @@
+# HELP tool_calls_total Total tool call decisions by tool, decision, and tenant
+# TYPE tool_calls_total counter
+tool_calls_total{decision="deny",tenant="acme",tool="deletePet"} 1
+tool_calls_total{decision="allow",tenant="acme",tool="echo"} 3
+# HELP rate_limited_total Total rate-limited tool call attempts
+# TYPE rate_limited_total counter
+rate_limited_total 0
+# HELP ip_denied_total Total requests denied by per-tenant IP allowlist
+# TYPE ip_denied_total counter
+ip_denied_total 2
+# HELP body_too_large_total Total requests rejected for exceeding maxBodyBytes
+# TYPE body_too_large_total counter
+body_too_large_total 2
+# HELP upstream_timeout_total Total upstream HTTP/stdio calls aborted after timeoutMs
+# TYPE upstream_timeout_total counter
+upstream_timeout_total 0
+# HELP circuit_open_total Total tools/call requests rejected because the upstream circuit breaker is open
+# TYPE circuit_open_total counter
+circuit_open_total 0
+# HELP webhook_retries_total Total outbound audit webhook POST retries (OSS: one retry on 5xx or network/timeout)
+# TYPE webhook_retries_total counter
+webhook_retries_total 0
+# HELP http_requests_total Total HTTP requests by path and status
+# TYPE http_requests_total counter
+http_requests_total{path="/health",status="200"} 5
+http_requests_total{path="/ready",status="200"} 1
+http_requests_total{path="/openapi.json",status="200"} 1
+http_requests_total{path="/health",status="204"} 1
+http_requests_total{path="/tools/list",status="204"} 1
+http_requests_total{path="/health",status="403"} 1
+http_requests_total{path="/tools/list",status="200"} 5
+http_requests_total{path="/admin/tenants",status="401"} 2
+http_requests_total{path="/admin/tenants",status="200"} 1
+http_requests_total{path="/admin/tenants/{id}",status="401"} 1
+http_requests_total{path="/admin/tenants/{id}",status="200"} 1
+http_requests_total{path="/admin/tenants/{id}",status="404"} 1
+http_requests_total{path="/admin/tenants/acme",status="204"} 1
+http_requests_total{path="/tools/list",status="401"} 2
+http_requests_total{path="/admin/config",status="401"} 1
+http_requests_total{path="/admin/config",status="200"} 1
+http_requests_total{path="/admin/config",status="204"} 1
+http_requests_total{path="/admin/webhooks",status="401"} 2
+http_requests_total{path="/admin/webhooks",status="200"} 1
+http_requests_total{path="/admin/webhooks",status="204"} 1
+http_requests_total{path="/admin/sessions",status="401"} 1
+http_requests_total{path="/admin/sessions",status="200"} 3
+http_requests_total{path="/admin/sessions",status="204"} 1
+http_requests_total{path="/mcp",status="405"} 1
+http_requests_total{path="/mcp",status="200"} 3
+http_requests_total{path="/mcp",status="400"} 1
+http_requests_total{path="/mcp",status="204"} 1
+http_requests_total{path="/mcp",status="404"} 3
+http_requests_total{path="/admin/sessions/{id}",status="401"} 1
+http_requests_total{path="/admin/sessions/ac8eb172-8954-44ba-9bf6-805d5114099e",status="204"} 1
+http_requests_total{path="/admin/sessions/{id}",status="204"} 1
+http_requests_total{path="/admin/sessions/{id}",status="404"} 1
+http_requests_total{path="/admin/sessions",status="404"} 1
+http_requests_total{path="/tools/call",status="403"} 1
+http_requests_total{path="/tools/call",status="200"} 3
+http_requests_total{path="/tools/call",status="413"} 2
+http_requests_total{path="/tools/list",status="403"} 2
+# HELP audit_events In-memory audit events currently retained (ring buffer)
+# TYPE audit_events gauge
+audit_events 6
+# HELP audit_retained In-memory audit events currently retained (alias of audit_events)
+# TYPE audit_retained gauge
+audit_retained 6

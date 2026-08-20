@@ -1,0 +1,11 @@
+mcp-gateway listening on http://127.0.0.1:8787
+config=/workspace/oss-cash-lab/bets/b-mcp-gateway/data/policy.mvp.json
+audit=/workspace/oss-cash-lab/bets/b-mcp-gateway/data/audit.jsonl
+auditMax=10000
+sessionTtl=3600
+upstream type=http connected=true tools=upstreamPing,upstreamEcho
+watch=off
+logJson=off
+SIGHUP reloaded policy tenants=acme,restricted,ip-locked upstreamTools=upstreamPing,upstreamEcho
+shutting down
+exit
